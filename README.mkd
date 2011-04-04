@@ -1,12 +1,21 @@
-h1. MMGridView
+MMGridView
+----------
 
 MMGridView is a simple GridView / Dashboard like UI component for iOS. The default cell implementation gives you a background view, a label and background view behind the label. Feel free to create cell subclasses that fit your needs.
 
-h2. Usage
+Screenshots
+-----------
+![Portrait mode](https://github.com/provideal/MMGridView/blob/master/Images/i1.png "Portrait mode")
+![Landscape mode](https://github.com/provideal/MMGridView/blob/master/Images/i2.png "Landscape mode")
+![Double Tap support](https://github.com/provideal/MMGridView/blob/master/Images/i3.png "Double Tap support")
+
+Usage
+-----
 
 Copy all files from <tt>MMGridView/Classes</tt> to your project. Check out the demo project.
 
-h2. License
+License
+-------
 
 Copyright (c) 2010-2011 René Sprotte, <a href="http://www.provideal.net" target="_blank">Provideal GmbH</a>
 
