@@ -26,7 +26,9 @@
 #pragma - MMGridViewDelegate
 
 @protocol MMGridViewDelegate<NSObject>
-- (void)gridView:(MMGridView *)gridView didSelectAtIndex:(NSInteger)index;
+@optional
+- (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSInteger)index;
+- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSInteger)index;
 @end
 
 // ----------------------------------------------------------------------------------
@@ -39,7 +41,6 @@
     UIScrollView *scrollView;
     UIPageControl *pageControl;
     UIView *pageControlBackgroundView;
-    UIView *view;
     id<MMGridViewDataSource> dataSource;
     id<MMGridViewDelegate> delegate;
     NSUInteger numberOfRows;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E63973B1349CED300823606 /* AnyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6397381349CAEA00823606 /* AnyViewController.xib */; };
+		7E63973C1349CED900823606 /* AnyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6397371349CAEA00823606 /* AnyViewController.m */; };
 		7E6EF37C1340A48600DD91EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6EF37B1340A48600DD91EC /* Foundation.framework */; };
 		7E6EF3A91340A53100DD91EC /* MMGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6EF3A71340A53100DD91EC /* MMGridView.h */; };
 		7E6EF3AA1340A53100DD91EC /* MMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6EF3A81340A53100DD91EC /* MMGridView.m */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E6397361349CAEA00823606 /* AnyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnyViewController.h; sourceTree = "<group>"; };
+		7E6397371349CAEA00823606 /* AnyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnyViewController.m; sourceTree = "<group>"; };
+		7E6397381349CAEA00823606 /* AnyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnyViewController.xib; sourceTree = "<group>"; };
 		7E6EF3781340A48600DD91EC /* libMMGridView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMMGridView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E6EF37B1340A48600DD91EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7E6EF37F1340A48600DD91EC /* MMGridView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMGridView-Prefix.pch"; sourceTree = "<group>"; };
@@ -139,6 +144,9 @@
 				7E6EF3DC1340B52E00DD91EC /* RootViewController.h */,
 				7E6EF3DD1340B52E00DD91EC /* RootViewController.m */,
 				7E6EF3DF1340B52E00DD91EC /* RootViewController.xib */,
+				7E6397361349CAEA00823606 /* AnyViewController.h */,
+				7E6397371349CAEA00823606 /* AnyViewController.m */,
+				7E6397381349CAEA00823606 /* AnyViewController.xib */,
 			);
 			path = MMGridViewDemo;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				7E6EF3D21340B52E00DD91EC /* InfoPlist.strings in Resources */,
 				7E6EF3DB1340B52E00DD91EC /* MainWindow.xib in Resources */,
 				7E6EF3E11340B52E00DD91EC /* RootViewController.xib in Resources */,
+				7E63973B1349CED300823606 /* AnyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +269,7 @@
 				7E6EF3D51340B52E00DD91EC /* main.m in Sources */,
 				7E6EF3D81340B52E00DD91EC /* AppDelegate.m in Sources */,
 				7E6EF3DE1340B52E00DD91EC /* RootViewController.m in Sources */,
+				7E63973C1349CED900823606 /* AnyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

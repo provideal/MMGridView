@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MMGridView.h"
 
-@interface RootViewController : UIViewController<MMGridViewDataSource> 
+@interface RootViewController : UIViewController<MMGridViewDataSource, MMGridViewDelegate> 
 {
     IBOutlet MMGridView *gridView;
 }

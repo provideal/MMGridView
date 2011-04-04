@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "AnyViewController.h"
 
 @implementation RootViewController
 
@@ -26,12 +27,14 @@
     [super viewDidUnload];
 }
 
-- (void)loadView
+- (void)viewDidLoad
 {
-    [super loadView];
+    // Give us a nice title
+    self.title = @"MMGridView Demo";
+    
     // Create the GridView
     gridView = [[MMGridView alloc] initWithFrame:self.view.bounds];
-    //gridView.delegate = self;
+    gridView.delegate = self;
     gridView.dataSource = self;
     [self.view addSubview:gridView];
 }
@@ -59,6 +62,29 @@
     MMGridViewCell *cell = [[[MMGridViewCell alloc] initWithFrame:CGRectNull] autorelease];
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
     return cell;
+}
+
+// ----------------------------------------------------------------------------------
+
+#pragma - MMGridViewDelegate
+
+- (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSInteger)index
+{
+    AnyViewController *c = [[AnyViewController alloc] initWithNibName:@"AnyViewController" bundle:nil];
+    [self.navigationController pushViewController:c animated:YES];
+    [c release];
+}
+
+
+- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSInteger)index
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:[NSString stringWithFormat:@"Cell at index %d was double tapped.", index]
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"Cool!" 
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 @end

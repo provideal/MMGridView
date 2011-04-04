@@ -11,6 +11,7 @@
 
 @interface MMGridViewCell()
 @property (nonatomic, assign) MMGridView *gridView;
+@property (nonatomic, assign) NSNumber *index;
 @end
 
 
@@ -20,6 +21,7 @@
 @synthesize textLabelBackgroundView;
 @synthesize backgroundView;
 @synthesize gridView;
+@synthesize index;
 
 - (void)dealloc
 {

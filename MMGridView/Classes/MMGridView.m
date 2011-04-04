@@ -139,6 +139,8 @@
         for (NSInteger i = 0; i < numberOfCells; i++) {
             MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
             [cell performSelector:@selector(setGridView:) withObject:self];
+            [cell performSelector:@selector(setIndex:) withObject:[NSNumber numberWithInt:i]];
+            
             
             NSInteger page = (int)floor((float)i / (float)cellsPerPage);
             NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
@@ -157,13 +159,17 @@
 
 - (void)cellWasSelected:(MMGridViewCell *)cell
 {
-    NSLog(@"Cell was selected");
+    if (delegate) {
+        [delegate gridView:self didSelectCell:cell atIndex:[cell.index intValue]];
+    }
 }
 
 
 - (void)cellWasDoubleTapped:(MMGridViewCell *)cell
 {
-    NSLog(@"Cell was double tapped");
+    if (delegate) {
+        [delegate gridView:self didDoubleTappedCell:cell atIndex:[cell.index intValue]];
+    }
 }
 
 @end
