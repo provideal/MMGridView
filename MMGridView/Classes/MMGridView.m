@@ -160,7 +160,7 @@
 - (void)cellWasSelected:(MMGridViewCell *)cell
 {
     if (delegate) {
-        [delegate gridView:self didSelectCell:cell atIndex:[cell.index intValue]];
+        [delegate gridView:self didSelectCell:cell atIndex:cell.index];
     }
 }
 
@@ -168,7 +168,7 @@
 - (void)cellWasDoubleTapped:(MMGridViewCell *)cell
 {
     if (delegate) {
-        [delegate gridView:self didDoubleTappedCell:cell atIndex:[cell.index intValue]];
+        [delegate gridView:self didDoubleTappedCell:cell atIndex:cell.index];
     }
 }
 

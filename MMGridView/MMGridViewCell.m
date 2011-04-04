@@ -11,7 +11,6 @@
 
 @interface MMGridViewCell()
 @property (nonatomic, assign) MMGridView *gridView;
-@property (nonatomic, assign) NSNumber *index;
 @end
 
 
@@ -83,6 +82,12 @@
                           self.textLabel.superview.bounds.size.height);
     self.textLabel.frame = CGRectInset(f, inset, 0);
     self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+
+- (void)setIndex:(NSNumber *)theIndex
+{
+    index = [theIndex intValue];
 }
 
 // ----------------------------------------------------------------------------------
