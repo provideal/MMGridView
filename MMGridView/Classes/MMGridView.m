@@ -9,8 +9,10 @@
 #import "MMGridView.h"
 
 
-@interface MMGridView(Private)
+@interface MMGridView()
 - (void)createSubviews;
+- (void)cellWasSelected:(MMGridViewCell *)cell;
+- (void)cellWasDoubleTapped:(MMGridViewCell *)cell;
 @end
 
 
@@ -136,6 +138,7 @@
         
         for (NSInteger i = 0; i < numberOfCells; i++) {
             MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
+            [cell performSelector:@selector(setGridView:) withObject:self];
             
             NSInteger page = (int)floor((float)i / (float)cellsPerPage);
             NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
@@ -149,6 +152,18 @@
             [self.scrollView addSubview:cell];
         }
     }
+}
+
+
+- (void)cellWasSelected:(MMGridViewCell *)cell
+{
+    NSLog(@"Cell was selected");
+}
+
+
+- (void)cellWasDoubleTapped:(MMGridViewCell *)cell
+{
+    NSLog(@"Cell was double tapped");
 }
 
 @end

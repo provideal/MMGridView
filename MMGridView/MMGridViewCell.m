@@ -9,11 +9,17 @@
 #import "MMGridViewCell.h"
 
 
+@interface MMGridViewCell()
+@property (nonatomic, assign) MMGridView *gridView;
+@end
+
+
 @implementation MMGridViewCell
 
 @synthesize textLabel;
 @synthesize textLabelBackgroundView;
 @synthesize backgroundView;
+@synthesize gridView;
 
 - (void)dealloc
 {
@@ -75,6 +81,41 @@
                           self.textLabel.superview.bounds.size.height);
     self.textLabel.frame = CGRectInset(f, inset, 0);
     self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+// ----------------------------------------------------------------------------------
+
+#pragma - Touch event handling
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *aTouch = [touches anyObject];
+    if (aTouch.tapCount == 2) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:gridView];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    SEL singleTapSelector = @selector(cellWasSelected:);
+    SEL doubleTapSelector = @selector(cellWasDoubleTapped:);
+    
+    if (gridView) {
+        UITouch *touch = [touches anyObject];
+        
+        switch ([touch tapCount]) 
+        {
+            case 1:
+                [gridView performSelector:singleTapSelector withObject:self afterDelay:.3];
+                break;
+                
+            case 2:
+                [gridView performSelector:doubleTapSelector withObject:self];
+                break;
+                              
+            default:
+                break;
+        }
+    }
 }
 
 @end

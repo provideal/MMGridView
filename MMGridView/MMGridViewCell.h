@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class MMGridView;
+
 @interface MMGridViewCell : UIView 
 {
     UILabel *textLabel;
     UIView *textLabelBackgroundView;
     UIView *backgroundView;
+    MMGridView *gridView;
 }
 
 @property (nonatomic, retain) UILabel *textLabel;
 @property (nonatomic, retain) UIView *textLabelBackgroundView;
 @property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, readonly) MMGridView *gridView;
 
 @end
