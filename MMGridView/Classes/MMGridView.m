@@ -55,8 +55,11 @@
 
 - (void)createSubviews
 {
-    self.numberOfRows = 2;
-    self.numberOfColumns = 3;
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
+    self.contentMode = UIViewContentModeRedraw;
+    
+    self.numberOfRows = 3;
+    self.numberOfColumns = 2;
     
     self.backgroundColor = [UIColor clearColor];
     
@@ -98,6 +101,7 @@
 - (void)layoutSubviews
 {
     self.scrollView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    [self reloadData];
 }
 
 
@@ -108,24 +112,36 @@
     }
     
     if (self.dataSource) {
-        NSInteger cellMargin = 0;
-        NSInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
+        NSInteger cellMargin = 3;
+        NSInteger noOfCols = self.numberOfColumns;
+        NSInteger noOfRows = self.numberOfRows;
+        NSInteger cellsPerPage = noOfCols * noOfRows;
+        
+        BOOL isLandscape = UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]);
+        if (isLandscape) {
+            // In landscape mode switch rows and columns
+            noOfCols = self.numberOfRows;
+            noOfRows = self.numberOfColumns;
+        }
         
         NSInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
         NSInteger numberOfPages = (int)(ceil((float)numberOfCells / (float)cellsPerPage));
         
         CGRect gridBounds = self.scrollView.bounds;
-        CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)self.numberOfColumns, gridBounds.size.height / (float)self.numberOfRows);
+        CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
+                                       gridBounds.size.height / (float)noOfRows);
         
-        [self.scrollView setContentSize:CGSizeMake((numberOfPages * gridBounds.size.width), gridBounds.size.height)];
+        CGSize contentSize = CGSizeMake(numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        [self.scrollView setContentSize:contentSize];
         
         for (NSInteger i = 0; i < numberOfCells; i++) {
             MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
             
             NSInteger page = (int)floor((float)i / (float)cellsPerPage);
-            NSInteger row  = (int)floor((float)i / (float)self.numberOfColumns) - (page * self.numberOfRows);
+            NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
             
-            CGPoint origin = CGPointMake((page * gridBounds.size.width) + ((i % self.numberOfColumns) * cellBounds.size.width), (row * cellBounds.size.height));
+            CGPoint origin = CGPointMake((page * gridBounds.size.width) + ((i % noOfCols) * cellBounds.size.width), 
+                                         (row * cellBounds.size.height));
             
             CGRect f = CGRectMake(origin.x, origin.y, cellBounds.size.width, cellBounds.size.height);
             cell.frame = CGRectInset(f, cellMargin, cellMargin);

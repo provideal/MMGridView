@@ -10,6 +10,10 @@
 
 @implementation RootViewController
 
+// ----------------------------------------------------------------------------------
+
+#pragma - Object lifecycle
+
 - (void)dealloc
 {
     [gridView release];
@@ -30,6 +34,14 @@
     //gridView.delegate = self;
     gridView.dataSource = self;
     [self.view addSubview:gridView];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || 
+            interfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 // ----------------------------------------------------------------------------------
