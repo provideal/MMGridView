@@ -5,7 +5,7 @@ MMGridView is a simple GridView / Dashboard like UI component for iOS. The defau
 
 Screenshots
 -----------
-![Portrait mode](https://github.com/provideal/MMGridView/raw/master/Images/i1.png "Portrait mode")
+![Portrait mode](https://github.com/provideal/MMGridView/raw/master/Images/i1.png "Portrait mode" =150x150)
 ![Landscape mode](https://github.com/provideal/MMGridView/raw/master/Images/i2.png "Landscape mode")
 ![Double Tap support](https://github.com/provideal/MMGridView/raw/master/Images/i3.png "Double Tap support")
 
