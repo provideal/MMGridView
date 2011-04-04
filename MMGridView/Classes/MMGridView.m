@@ -25,6 +25,8 @@
 @synthesize delegate;
 @synthesize numberOfRows;
 @synthesize numberOfColumns;
+@synthesize cellMargin;
+
 
 - (void)dealloc
 {
@@ -60,6 +62,7 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
     self.contentMode = UIViewContentModeRedraw;
     
+    self.cellMargin = 3;
     self.numberOfRows = 3;
     self.numberOfColumns = 2;
     
@@ -97,6 +100,14 @@
 - (void)setNumberOfRows:(NSUInteger)value
 {
     numberOfRows = value;
+    [self reloadData];
+}
+
+
+- (void)setCellMargin:(NSUInteger)value
+{
+    cellMargin = value;
+    [self reloadData];
 }
 
 
@@ -114,7 +125,6 @@
     }
     
     if (self.dataSource) {
-        NSInteger cellMargin = 3;
         NSInteger noOfCols = self.numberOfColumns;
         NSInteger noOfRows = self.numberOfRows;
         NSInteger cellsPerPage = noOfCols * noOfRows;
@@ -149,7 +159,7 @@
                                          (row * cellBounds.size.height));
             
             CGRect f = CGRectMake(origin.x, origin.y, cellBounds.size.width, cellBounds.size.height);
-            cell.frame = CGRectInset(f, cellMargin, cellMargin);
+            cell.frame = CGRectInset(f, self.cellMargin, self.cellMargin);
             
             [self.scrollView addSubview:cell];
         }

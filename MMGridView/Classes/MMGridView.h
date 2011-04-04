@@ -45,6 +45,7 @@
     id<MMGridViewDelegate> delegate;
     NSUInteger numberOfRows;
     NSUInteger numberOfColumns;
+    NSUInteger cellMargin;
 }
 
 @property (nonatomic, retain) UIScrollView *scrollView;
@@ -54,8 +55,8 @@
 @property (nonatomic, assign) IBOutlet id<MMGridViewDelegate> delegate;
 @property (nonatomic) NSUInteger numberOfRows;
 @property (nonatomic) NSUInteger numberOfColumns;
+@property (nonatomic) NSUInteger cellMargin;
 
 - (void)reloadData;
-//- (void)cellWasSelected:(MMGridViewCell *)cell;
 
 @end
