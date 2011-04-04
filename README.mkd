@@ -3,11 +3,11 @@ MMGridView
 
 MMGridView is a simple GridView / Dashboard like UI component for iOS. The default cell implementation gives you a background view, a label and background view behind the label. Feel free to create cell subclasses that fit your needs.
 
-Screenshots
------------
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i1.png" width="160"/>
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i2.png" height="160"/>
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i3.png" width="160"/>
+Screenshots (Demo App)
+----------------------
+<img src="https://github.com/provideal/MMGridView/raw/master/Images/i1.png" width="170"/>
+<img src="https://github.com/provideal/MMGridView/raw/master/Images/i2.png" height="170"/>
+<img src="https://github.com/provideal/MMGridView/raw/master/Images/i3.png" width="170"/>
 
 Usage
 -----
