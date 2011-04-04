@@ -108,14 +108,14 @@
     }
     
     if (self.dataSource) {
-        NSInteger cellMargin = 5;
+        NSInteger cellMargin = 0;
         NSInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
         
         NSInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
         NSInteger numberOfPages = (int)(ceil((float)numberOfCells / (float)cellsPerPage));
         
         CGRect gridBounds = self.scrollView.bounds;
-        CGRect cellBounds = CGRectMake(0, 0, floor(gridBounds.size.width / (float)self.numberOfColumns), floor(gridBounds.size.height / (float)self.numberOfRows));
+        CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)self.numberOfColumns, gridBounds.size.height / (float)self.numberOfRows);
         
         [self.scrollView setContentSize:CGSizeMake((numberOfPages * gridBounds.size.width), gridBounds.size.height)];
         
