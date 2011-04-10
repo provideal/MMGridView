@@ -3,12 +3,20 @@ MMGridView
 
 MMGridView is a simple GridView / Dashboard like UI component for iOS. The default cell implementation gives you a background view, a label and background view behind the label. Feel free to create cell subclasses that fit your needs.
 
-Screenshots (Demo App)
-----------------------
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i1.png" width="180"/>
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i2.png" height="180"/>
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i3.png" width="180"/>
-<img src="https://github.com/provideal/MMGridView/raw/master/Images/i4.png" width="180"/>
+Screenshots (Demo App + one real life example)
+----------------------------------------------
+<a href="https://github.com/provideal/MMGridView/blob/master/Images/i1.png">
+    <img src="https://github.com/provideal/MMGridView/raw/master/Images/i1.png" width="180"/>
+</a>
+<a href="https://github.com/provideal/MMGridView/blob/master/Images/i2.png">
+    <img src="https://github.com/provideal/MMGridView/raw/master/Images/i2.png" height="180"/>
+</a>
+<a href="https://github.com/provideal/MMGridView/blob/master/Images/i3.png">
+    <img src="https://github.com/provideal/MMGridView/raw/master/Images/i3.png" width="180"/>
+</a>
+<a href="https://github.com/provideal/MMGridView/blob/master/Images/i4.png">
+    <img src="https://github.com/provideal/MMGridView/raw/master/Images/i4.png" width="180"/>
+</a>
 
 Usage
 -----
