@@ -59,7 +59,7 @@
     NSUInteger cellMargin;
 }
 
-@property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic, retain, readonly) UIScrollView *scrollView;
 @property (nonatomic, assign) IBOutlet id<MMGridViewDataSource> dataSource;
 @property (nonatomic, assign) IBOutlet id<MMGridViewDelegate> delegate;
 @property (nonatomic) NSUInteger numberOfRows;

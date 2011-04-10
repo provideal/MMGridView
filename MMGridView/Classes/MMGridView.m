@@ -23,6 +23,9 @@
 
 
 @interface MMGridView()
+
+@property (nonatomic, retain) UIScrollView *scrollView;
+
 - (void)createSubviews;
 - (void)cellWasSelected:(MMGridViewCell *)cell;
 - (void)cellWasDoubleTapped:(MMGridViewCell *)cell;
