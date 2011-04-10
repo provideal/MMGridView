@@ -32,8 +32,6 @@
 @implementation MMGridView
 
 @synthesize scrollView;
-@synthesize pageControl;
-@synthesize pageControlBackgroundView;
 @synthesize dataSource;
 @synthesize delegate;
 @synthesize numberOfRows;
@@ -44,8 +42,6 @@
 - (void)dealloc
 {
     [scrollView release];
-    [pageControl release];
-    [pageControlBackgroundView release];
     [super dealloc];
 }
 

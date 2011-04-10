@@ -52,8 +52,6 @@
 {
     @private
     UIScrollView *scrollView;
-    UIPageControl *pageControl;
-    UIView *pageControlBackgroundView;
     id<MMGridViewDataSource> dataSource;
     id<MMGridViewDelegate> delegate;
     NSUInteger numberOfRows;
@@ -62,8 +60,6 @@
 }
 
 @property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) UIPageControl *pageControl;
-@property (nonatomic, retain) UIView *pageControlBackgroundView;
 @property (nonatomic, assign) IBOutlet id<MMGridViewDataSource> dataSource;
 @property (nonatomic, assign) IBOutlet id<MMGridViewDelegate> delegate;
 @property (nonatomic) NSUInteger numberOfRows;
