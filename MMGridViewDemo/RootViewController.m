@@ -70,7 +70,7 @@
 }
 
 
-- (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSInteger)index
+- (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSUInteger)index
 {
     MMGridViewCell *cell = [[[MMGridViewCell alloc] initWithFrame:CGRectNull] autorelease];
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
@@ -81,7 +81,7 @@
 
 #pragma - MMGridViewDelegate
 
-- (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSInteger)index
+- (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index
 {
     AnyViewController *c = [[AnyViewController alloc] initWithNibName:@"AnyViewController" bundle:nil];
     [self.navigationController pushViewController:c animated:YES];
@@ -89,7 +89,7 @@
 }
 
 
-- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSInteger)index
+- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                     message:[NSString stringWithFormat:@"Cell at index %d was double tapped.", index]
@@ -98,6 +98,13 @@
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
+}
+
+
+- (void)gridView:(MMGridView *)theGridView changedPageToIndex:(NSUInteger)index
+{
+    NSLog(@"GridView changed page to index: %d", index);
+    NSLog(@"GridView has %d pages", theGridView.numberOfPages);
 }
 
 @end

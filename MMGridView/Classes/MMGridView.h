@@ -31,7 +31,7 @@
 
 @protocol MMGridViewDataSource<NSObject>
 - (NSInteger)numberOfCellsInGridView:(MMGridView *)gridView;
-- (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSInteger)index;
+- (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSUInteger)index;
 @end
 
 // ----------------------------------------------------------------------------------
@@ -40,15 +40,16 @@
 
 @protocol MMGridViewDelegate<NSObject>
 @optional
-- (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSInteger)index;
-- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSInteger)index;
+- (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
+- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
+- (void)gridView:(MMGridView *)gridView changedPageToIndex:(NSUInteger)index;
 @end
 
 // ----------------------------------------------------------------------------------
 
 #pragma - MMGridView
 
-@interface MMGridView : UIView 
+@interface MMGridView : UIView<UIScrollViewDelegate> 
 {
     @private
     UIScrollView *scrollView;
@@ -65,6 +66,8 @@
 @property (nonatomic) NSUInteger numberOfRows;
 @property (nonatomic) NSUInteger numberOfColumns;
 @property (nonatomic) NSUInteger cellMargin;
+@property (nonatomic, readonly) NSUInteger currentPageIndex;
+@property (nonatomic, readonly) NSUInteger numberOfPages;
 
 - (void)reloadData;
 

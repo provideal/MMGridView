@@ -25,10 +25,13 @@
 @interface MMGridView()
 
 @property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic) NSUInteger currentPageIndex;
+@property (nonatomic) NSUInteger numberOfPages;
 
 - (void)createSubviews;
 - (void)cellWasSelected:(MMGridViewCell *)cell;
 - (void)cellWasDoubleTapped:(MMGridViewCell *)cell;
+- (void)updateCurrentPageIndex;
 @end
 
 
@@ -40,6 +43,8 @@
 @synthesize numberOfRows;
 @synthesize numberOfColumns;
 @synthesize cellMargin;
+@synthesize currentPageIndex;
+@synthesize numberOfPages;
 
 
 - (void)dealloc
@@ -77,10 +82,12 @@
     self.cellMargin = 3;
     self.numberOfRows = 3;
     self.numberOfColumns = 2;
+    self.currentPageIndex = 0;
     
     self.backgroundColor = [UIColor clearColor];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
+    self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor clearColor];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.scrollView.alwaysBounceHorizontal = NO;
@@ -123,6 +130,14 @@
 }
 
 
+- (NSUInteger)numberOfPages
+{
+    NSUInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
+    NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
+    return (uint)(ceil((float)numberOfCells / (float)cellsPerPage));
+}
+
+
 - (void)layoutSubviews
 {
     self.scrollView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
@@ -139,7 +154,7 @@
     if (self.dataSource) {
         NSInteger noOfCols = self.numberOfColumns;
         NSInteger noOfRows = self.numberOfRows;
-        NSInteger cellsPerPage = noOfCols * noOfRows;
+        NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
         
         BOOL isLandscape = UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]);
         if (isLandscape) {
@@ -148,17 +163,14 @@
             noOfRows = self.numberOfColumns;
         }
         
-        NSInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
-        NSInteger numberOfPages = (int)(ceil((float)numberOfCells / (float)cellsPerPage));
-        
         CGRect gridBounds = self.scrollView.bounds;
         CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
                                        gridBounds.size.height / (float)noOfRows);
         
-        CGSize contentSize = CGSizeMake(numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        CGSize contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
         [self.scrollView setContentSize:contentSize];
         
-        for (NSInteger i = 0; i < numberOfCells; i++) {
+        for (NSInteger i = 0; i < [self.dataSource numberOfCellsInGridView:self]; i++) {
             MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
             [cell performSelector:@selector(setGridView:) withObject:self];
             [cell performSelector:@selector(setIndex:) withObject:[NSNumber numberWithInt:i]];
@@ -192,6 +204,27 @@
     if (delegate) {
         [delegate gridView:self didDoubleTappedCell:cell atIndex:cell.index];
     }
+}
+
+
+- (void)updateCurrentPageIndex
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    NSUInteger cpi = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.currentPageIndex = cpi;
+    
+    if (delegate) {
+        [self.delegate gridView:self changedPageToIndex:self.currentPageIndex];
+    }
+}
+
+// ----------------------------------------------------------------------------------
+
+#pragma - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self updateCurrentPageIndex];
 }
 
 @end
