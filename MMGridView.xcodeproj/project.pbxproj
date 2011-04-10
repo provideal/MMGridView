@@ -22,6 +22,8 @@
 		7E6EF3DE1340B52E00DD91EC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6EF3DD1340B52E00DD91EC /* RootViewController.m */; };
 		7E6EF3E11340B52E00DD91EC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6EF3DF1340B52E00DD91EC /* RootViewController.xib */; };
 		7E6EF3EB1340BE9300DD91EC /* libMMGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6EF3781340A48600DD91EC /* libMMGridView.a */; };
+		7E79DC22135240430085C23D /* MMGridViewDefaultCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E79DC20135240430085C23D /* MMGridViewDefaultCell.h */; };
+		7E79DC23135240430085C23D /* MMGridViewDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E79DC21135240430085C23D /* MMGridViewDefaultCell.m */; };
 		7EBF307E1349F161007AE714 /* MMGridViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBF307C1349F161007AE714 /* MMGridViewCell.h */; };
 		7EBF307F1349F161007AE714 /* MMGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF307D1349F161007AE714 /* MMGridViewCell.m */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,8 @@
 		7E6EF3DC1340B52E00DD91EC /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		7E6EF3DD1340B52E00DD91EC /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		7E6EF3E01340B52E00DD91EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		7E79DC20135240430085C23D /* MMGridViewDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGridViewDefaultCell.h; sourceTree = "<group>"; };
+		7E79DC21135240430085C23D /* MMGridViewDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGridViewDefaultCell.m; sourceTree = "<group>"; };
 		7EBF307C1349F161007AE714 /* MMGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMGridViewCell.h; path = Classes/MMGridViewCell.h; sourceTree = "<group>"; };
 		7EBF307D1349F161007AE714 /* MMGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMGridViewCell.m; path = Classes/MMGridViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +126,8 @@
 				7E6EF3A81340A53100DD91EC /* MMGridView.m */,
 				7EBF307C1349F161007AE714 /* MMGridViewCell.h */,
 				7EBF307D1349F161007AE714 /* MMGridViewCell.m */,
+				7E79DC20135240430085C23D /* MMGridViewDefaultCell.h */,
+				7E79DC21135240430085C23D /* MMGridViewDefaultCell.m */,
 			);
 			path = MMGridView;
 			sourceTree = "<group>";
@@ -171,6 +177,7 @@
 			files = (
 				7E6EF3A91340A53100DD91EC /* MMGridView.h in Headers */,
 				7EBF307E1349F161007AE714 /* MMGridViewCell.h in Headers */,
+				7E79DC22135240430085C23D /* MMGridViewDefaultCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +266,7 @@
 			files = (
 				7E6EF3AA1340A53100DD91EC /* MMGridView.m in Sources */,
 				7EBF307F1349F161007AE714 /* MMGridViewCell.m in Sources */,
+				7E79DC23135240430085C23D /* MMGridViewDefaultCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

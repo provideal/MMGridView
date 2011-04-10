@@ -25,16 +25,10 @@
 
 @interface MMGridViewCell : UIView 
 {
-    UILabel *textLabel;
-    UIView *textLabelBackgroundView;
-    UIView *backgroundView;
     MMGridView *gridView;
     NSInteger index;
 }
 
-@property (nonatomic, retain) UILabel *textLabel;
-@property (nonatomic, retain) UIView *textLabelBackgroundView;
-@property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic, readonly) MMGridView *gridView;
 @property (nonatomic, readonly) NSInteger index;
 

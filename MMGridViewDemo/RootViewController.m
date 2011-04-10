@@ -21,6 +21,7 @@
 
 #import "RootViewController.h"
 #import "AnyViewController.h"
+#import "MMGridViewDefaultCell.h"
 
 @implementation RootViewController
 
@@ -72,7 +73,7 @@
 
 - (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSUInteger)index
 {
-    MMGridViewCell *cell = [[[MMGridViewCell alloc] initWithFrame:CGRectNull] autorelease];
+    MMGridViewDefaultCell *cell = [[[MMGridViewDefaultCell alloc] initWithFrame:CGRectNull] autorelease];
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
     return cell;
 }
