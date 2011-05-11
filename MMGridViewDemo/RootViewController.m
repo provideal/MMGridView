@@ -45,12 +45,6 @@
 {
     // Give us a nice title
     self.title = @"MMGridView Demo";
-    
-    // Create the GridView
-    gridView = [[MMGridView alloc] initWithFrame:self.view.bounds];
-    gridView.delegate = self;
-    gridView.dataSource = self;
-    [self.view addSubview:gridView];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -104,8 +98,8 @@
 
 - (void)gridView:(MMGridView *)theGridView changedPageToIndex:(NSUInteger)index
 {
-    NSLog(@"GridView changed page to index: %d", index);
-    NSLog(@"GridView has %d pages", theGridView.numberOfPages);
+    pageControl.numberOfPages = theGridView.numberOfPages;
+    pageControl.currentPage = index;
 }
 
 @end

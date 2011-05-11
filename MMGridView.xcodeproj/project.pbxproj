@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E05487E137A7412001A803F /* MMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6EF3A81340A53100DD91EC /* MMGridView.m */; };
 		7E63973B1349CED300823606 /* AnyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6397381349CAEA00823606 /* AnyViewController.xib */; };
 		7E63973C1349CED900823606 /* AnyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6397371349CAEA00823606 /* AnyViewController.m */; };
 		7E6EF37C1340A48600DD91EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6EF37B1340A48600DD91EC /* Foundation.framework */; };
@@ -278,6 +279,7 @@
 				7E6EF3D81340B52E00DD91EC /* AppDelegate.m in Sources */,
 				7E6EF3DE1340B52E00DD91EC /* RootViewController.m in Sources */,
 				7E63973C1349CED900823606 /* AnyViewController.m in Sources */,
+				7E05487E137A7412001A803F /* MMGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

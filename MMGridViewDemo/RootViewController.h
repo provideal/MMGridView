@@ -25,6 +25,7 @@
 @interface RootViewController : UIViewController<MMGridViewDataSource, MMGridViewDelegate> 
 {
     IBOutlet MMGridView *gridView;
+    IBOutlet UIPageControl *pageControl;
 }
 
 @end
