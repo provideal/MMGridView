@@ -178,8 +178,6 @@
             
             [self.scrollView addSubview:cell];
         }
-        
-        // [self.scrollView scrollRectToVisible:self.frame animated:YES];
     }
 }
 
