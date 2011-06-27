@@ -41,7 +41,7 @@
 @protocol MMGridViewDelegate<NSObject>
 @optional
 - (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
-- (void)gridView:(MMGridView *)gridView didDoubleTappedCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
+- (void)gridView:(MMGridView *)gridView didDoubleTapCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
 - (void)gridView:(MMGridView *)gridView changedPageToIndex:(NSUInteger)index;
 @end
 

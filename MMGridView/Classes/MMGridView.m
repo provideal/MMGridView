@@ -195,7 +195,7 @@
 - (void)cellWasDoubleTapped:(MMGridViewCell *)cell
 {
     if (delegate) {
-        [delegate gridView:self didDoubleTappedCell:cell atIndex:cell.index];
+        [delegate gridView:self didDoubleTapCell:cell atIndex:cell.index];
     }
 }
 
