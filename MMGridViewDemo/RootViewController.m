@@ -23,6 +23,11 @@
 #import "AnyViewController.h"
 #import "MMGridViewDefaultCell.h"
 
+
+@interface RootViewController()
+- (void)reload;
+@end
+
 @implementation RootViewController
 
 // ----------------------------------------------------------------------------------
@@ -32,12 +37,15 @@
 - (void)dealloc
 {
     [gridView release];
+    [pageControl release];
     [super dealloc];
 }
 
 - (void)viewDidUnload {
     [gridView release];
     gridView = nil;
+    [pageControl release];
+    pageControl = nil;
     [super viewDidUnload];
 }
 
@@ -45,6 +53,13 @@
 {
     // Give us a nice title
     self.title = @"MMGridView Demo";
+    
+    // Create a reload button
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
+                                                                                  target:self 
+                                                                                  action:@selector(reload)];
+    self.navigationItem.rightBarButtonItem = reloadButton;
+    [reloadButton release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -53,6 +68,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait || 
             interfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
             interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+}
+
+
+- (void)reload
+{
+    [gridView reloadData];
 }
 
 // ----------------------------------------------------------------------------------
