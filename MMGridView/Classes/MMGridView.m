@@ -76,17 +76,16 @@
 
 - (void)createSubviews
 {
+    cellMargin = 3;
+    numberOfRows = 3;
+    numberOfColumns = 2;
+    currentPageIndex = 0;
+    
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
     self.contentMode = UIViewContentModeRedraw;
-    
-    self.cellMargin = 3;
-    self.numberOfRows = 3;
-    self.numberOfColumns = 2;
-    self.currentPageIndex = 0;
-    
     self.backgroundColor = [UIColor clearColor];
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor clearColor];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -97,8 +96,7 @@
     self.scrollView.pagingEnabled = YES;
     [self addSubview:self.scrollView];
     
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
+    [self reloadData];
 }
 
 
@@ -135,13 +133,6 @@
     NSUInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
     NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
     return (uint)(ceil((float)numberOfCells / (float)cellsPerPage));
-}
-
-
-- (void)layoutSubviews
-{
-    self.scrollView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-    [self reloadData];
 }
 
 
@@ -187,6 +178,8 @@
             
             [self.scrollView addSubview:cell];
         }
+        
+        // [self.scrollView scrollRectToVisible:self.frame animated:YES];
     }
 }
 
@@ -223,6 +216,12 @@
 #pragma - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self updateCurrentPageIndex];
+}
+
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     [self updateCurrentPageIndex];
 }
