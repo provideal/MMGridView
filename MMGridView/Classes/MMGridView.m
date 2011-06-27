@@ -74,6 +74,12 @@
 }
 
 
+- (void)layoutSubviews
+{
+    [self reloadData];
+}
+
+
 - (void)createSubviews
 {
     cellMargin = 3;
@@ -142,7 +148,7 @@
         [v removeFromSuperview];
     }
     
-    if (self.dataSource) {
+    if (self.dataSource && self.numberOfRows > 0 && self.numberOfColumns > 0) {
         NSInteger noOfCols = self.numberOfColumns;
         NSInteger noOfRows = self.numberOfRows;
         NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
