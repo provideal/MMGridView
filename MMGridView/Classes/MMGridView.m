@@ -190,7 +190,7 @@
 
 - (void)cellWasSelected:(MMGridViewCell *)cell
 {
-    if (delegate) {
+    if (delegate && [delegate respondsToSelector:@selector(gridView:didSelectCell:atIndex:)]) {
         [delegate gridView:self didSelectCell:cell atIndex:cell.index];
     }
 }
@@ -198,7 +198,7 @@
 
 - (void)cellWasDoubleTapped:(MMGridViewCell *)cell
 {
-    if (delegate) {
+    if (delegate && [delegate respondsToSelector:@selector(gridView:didDoubleTapCell:atIndex:)]) {
         [delegate gridView:self didDoubleTapCell:cell atIndex:cell.index];
     }
 }
@@ -210,7 +210,7 @@
     NSUInteger cpi = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.currentPageIndex = cpi;
     
-    if (delegate) {
+    if (delegate && [delegate respondsToSelector:@selector(gridView:changedPageToIndex:)]) {
         [self.delegate gridView:self changedPageToIndex:self.currentPageIndex];
     }
 }
