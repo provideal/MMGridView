@@ -41,15 +41,15 @@
 {
     if ((self = [super initWithFrame:frame])) {
         // Background view
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
+        self.backgroundView = [[[UIView alloc] initWithFrame:CGRectNull] autorelease];
         self.backgroundView.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.backgroundView];
         
         // Label
-        self.textLabelBackgroundView = [[UIView alloc] initWithFrame:CGRectNull];
+        self.textLabelBackgroundView = [[[UIView alloc] initWithFrame:CGRectNull] autorelease];
         self.textLabelBackgroundView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
         
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectNull];
+        self.textLabel = [[[UILabel alloc] initWithFrame:CGRectNull] autorelease];
         self.textLabel.textAlignment = UITextAlignmentRight;
         self.textLabel.backgroundColor = [UIColor clearColor];
         self.textLabel.textColor = [UIColor whiteColor];
