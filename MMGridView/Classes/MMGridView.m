@@ -124,7 +124,7 @@
     self.contentMode = UIViewContentModeRedraw;
     self.backgroundColor = [UIColor clearColor];
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    self.scrollView = [[[UIScrollView alloc] initWithFrame:self.bounds] autorelease];
     self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor clearColor];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
