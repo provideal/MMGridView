@@ -127,6 +127,8 @@
 
         for (NSInteger i = 0; i < [self.dataSource numberOfCellsInGridView:self]; i++) {
             MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
+            [cell performSelector:@selector(setGridView:) withObject:self];
+            [cell performSelector:@selector(setIndex:) withObject:[NSNumber numberWithInt:i]];
          
             NSInteger page = (int)floor((float)i / (float)cellsPerPage);
             NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
