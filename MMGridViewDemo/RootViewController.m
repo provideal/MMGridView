@@ -26,6 +26,7 @@
 
 @interface RootViewController()
 - (void)reload;
+- (void)setupPageControl;
 @end
 
 @implementation RootViewController
@@ -41,6 +42,7 @@
     [super dealloc];
 }
 
+
 - (void)viewDidUnload {
     [gridView release];
     gridView = nil;
@@ -48,6 +50,7 @@
     pageControl = nil;
     [super viewDidUnload];
 }
+
 
 - (void)viewDidLoad
 {
@@ -60,7 +63,11 @@
                                                                                   action:@selector(reload)];
     self.navigationItem.rightBarButtonItem = reloadButton;
     [reloadButton release];
+    
+    // setup the page control 
+    [self setupPageControl];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -76,13 +83,20 @@
     [gridView reloadData];
 }
 
+
+- (void)setupPageControl
+{
+    pageControl.numberOfPages = gridView.numberOfPages;
+    pageControl.currentPage = gridView.currentPageIndex;
+}
+
 // ----------------------------------------------------------------------------------
 
 #pragma - MMGridViewDataSource
 
 - (NSInteger)numberOfCellsInGridView:(MMGridView *)gridView
 {
-    return 15;
+    return 42;
 }
 
 
@@ -90,7 +104,6 @@
 {
     MMGridViewDefaultCell *cell = [[[MMGridViewDefaultCell alloc] initWithFrame:CGRectNull] autorelease];
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
-    // cell.backgroundView.backgroundColor = [UIColor redColor];
     cell.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell-image.png"]];
     return cell;
 }
@@ -121,8 +134,7 @@
 
 - (void)gridView:(MMGridView *)theGridView changedPageToIndex:(NSUInteger)index
 {
-    pageControl.numberOfPages = theGridView.numberOfPages;
-    pageControl.currentPage = index;
+    [self setupPageControl];
 }
 
 @end

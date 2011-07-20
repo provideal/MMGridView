@@ -74,45 +74,6 @@
 }
 
 
-- (void)layoutSubviews
-{
-    if (self.dataSource && self.numberOfRows > 0 && self.numberOfColumns > 0) {
-        NSInteger noOfCols = self.numberOfColumns;
-        NSInteger noOfRows = self.numberOfRows;
-        NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
-        
-        BOOL isLandscape = UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]);
-        if (isLandscape) {
-            // In landscape mode switch rows and columns
-            noOfCols = self.numberOfRows;
-            noOfRows = self.numberOfColumns;
-        }
-        
-        CGRect gridBounds = self.scrollView.bounds;
-        CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
-                                       gridBounds.size.height / (float)noOfRows);
-        
-        CGSize contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
-        [self.scrollView setContentSize:contentSize];
-        
-        for (NSInteger i = 0; i < [self.dataSource numberOfCellsInGridView:self]; i++) {
-            MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
-
-            NSInteger page = (int)floor((float)i / (float)cellsPerPage);
-            NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
-            
-            CGPoint origin = CGPointMake((page * gridBounds.size.width) + ((i % noOfCols) * cellBounds.size.width), 
-                                         (row * cellBounds.size.height));
-            
-            CGRect f = CGRectMake(origin.x, origin.y, cellBounds.size.width, cellBounds.size.height);
-            cell.frame = CGRectInset(f, self.cellMargin, self.cellMargin);
-            
-            [self.scrollView addSubview:cell];
-        }
-    }
-}
-
-
 - (void)createSubviews
 {
     cellMargin = 3;
@@ -136,6 +97,49 @@
     [self addSubview:self.scrollView];
     
     [self reloadData];
+}
+
+
+- (void)drawRect:(CGRect)rect
+{
+    if (self.dataSource && self.numberOfRows > 0 && self.numberOfColumns > 0) {
+        NSInteger noOfCols = self.numberOfColumns;
+        NSInteger noOfRows = self.numberOfRows;
+        NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
+        
+        BOOL isLandscape = UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]);
+        if (isLandscape) {
+            // In landscape mode switch rows and columns
+            noOfCols = self.numberOfRows;
+            noOfRows = self.numberOfColumns;
+        }
+        
+        CGRect gridBounds = self.scrollView.bounds;
+        CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
+                                       gridBounds.size.height / (float)noOfRows);
+        
+        CGSize contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        [self.scrollView setContentSize:contentSize];
+        
+        for (UIView *v in self.scrollView.subviews) {
+            [v removeFromSuperview];
+        }
+
+        for (NSInteger i = 0; i < [self.dataSource numberOfCellsInGridView:self]; i++) {
+            MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
+         
+            NSInteger page = (int)floor((float)i / (float)cellsPerPage);
+            NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
+         
+            CGPoint origin = CGPointMake((page * gridBounds.size.width) + ((i % noOfCols) * cellBounds.size.width), 
+                                         (row * cellBounds.size.height));
+         
+            CGRect f = CGRectMake(origin.x, origin.y, cellBounds.size.width, cellBounds.size.height);
+            cell.frame = CGRectInset(f, self.cellMargin, self.cellMargin);
+         
+            [self.scrollView addSubview:cell];
+        }
+    }
 }
 
 
@@ -177,20 +181,7 @@
 
 - (void)reloadData
 {
-    for (UIView *v in self.scrollView.subviews) {
-        [v removeFromSuperview];
-    }
-    
-    if (self.dataSource && self.numberOfRows > 0 && self.numberOfColumns > 0) {       
-        for (NSInteger i = 0; i < [self.dataSource numberOfCellsInGridView:self]; i++) {
-            MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
-            [cell performSelector:@selector(setGridView:) withObject:self];
-            [cell performSelector:@selector(setIndex:) withObject:[NSNumber numberWithInt:i]];
-            [self.scrollView addSubview:cell];
-        }
-    }
-
-    [self setNeedsLayout];
+    [self setNeedsDisplay];
 }
 
 
