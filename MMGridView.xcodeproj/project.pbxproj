@@ -26,6 +26,7 @@
 		7E79DC22135240430085C23D /* MMGridViewDefaultCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E79DC20135240430085C23D /* MMGridViewDefaultCell.h */; };
 		7E79DC23135240430085C23D /* MMGridViewDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E79DC21135240430085C23D /* MMGridViewDefaultCell.m */; };
 		7E8B82D213B867BA00E5CA3F /* cell-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E8B82D113B867BA00E5CA3F /* cell-image.png */; };
+		7E9B3DEF13D6CB7B00D5E314 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B3DED13D6CB7B00D5E314 /* MainWindow-iPad.xib */; };
 		7EBF307E1349F161007AE714 /* MMGridViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EBF307C1349F161007AE714 /* MMGridViewCell.h */; };
 		7EBF307F1349F161007AE714 /* MMGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF307D1349F161007AE714 /* MMGridViewCell.m */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		7E79DC20135240430085C23D /* MMGridViewDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGridViewDefaultCell.h; sourceTree = "<group>"; };
 		7E79DC21135240430085C23D /* MMGridViewDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGridViewDefaultCell.m; sourceTree = "<group>"; };
 		7E8B82D113B867BA00E5CA3F /* cell-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-image.png"; sourceTree = "<group>"; };
+		7E9B3DEE13D6CB7B00D5E314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		7EBF307C1349F161007AE714 /* MMGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMGridViewCell.h; path = Classes/MMGridViewCell.h; sourceTree = "<group>"; };
 		7EBF307D1349F161007AE714 /* MMGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMGridViewCell.m; path = Classes/MMGridViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 		7E6EF3CD1340B52E00DD91EC /* MMGridViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7E9B3DEC13D6CB7B00D5E314 /* iPad */,
 				7E6EF3CE1340B52E00DD91EC /* Supporting Files */,
 				7E6EF3D61340B52E00DD91EC /* AppDelegate.h */,
 				7E6EF3D71340B52E00DD91EC /* AppDelegate.m */,
@@ -170,6 +173,14 @@
 				7E6EF3D41340B52E00DD91EC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E9B3DEC13D6CB7B00D5E314 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				7E9B3DED13D6CB7B00D5E314 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				7E6EF3E11340B52E00DD91EC /* RootViewController.xib in Resources */,
 				7E63973B1349CED300823606 /* AnyViewController.xib in Resources */,
 				7E8B82D213B867BA00E5CA3F /* cell-image.png in Resources */,
+				7E9B3DEF13D6CB7B00D5E314 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +332,14 @@
 				7E6EF3E01340B52E00DD91EC /* en */,
 			);
 			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+		7E9B3DED13D6CB7B00D5E314 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E9B3DEE13D6CB7B00D5E314 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -388,9 +408,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MMGridViewDemo/MMGridViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "MMGridViewDemo/MMGridViewDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -404,10 +425,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MMGridViewDemo/MMGridViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "MMGridViewDemo/MMGridViewDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
