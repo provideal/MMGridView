@@ -64,6 +64,14 @@
     self.navigationItem.rightBarButtonItem = reloadButton;
     [reloadButton release];
     
+    // setup MMGrid view 
+    
+    gridView.cellMargin = 5;
+    gridView.numberOfRows = 4;
+    gridView.numberOfColumns = 3;
+    // gridView.layoutStyle = HorizontalLayout;
+    gridView.layoutStyle = VerticalLayout;
+    
     // setup the page control 
     [self setupPageControl];
 }
@@ -96,7 +104,7 @@
 
 - (NSInteger)numberOfCellsInGridView:(MMGridView *)gridView
 {
-    return 42;
+    return 29;
 }
 
 

@@ -28,6 +28,9 @@
     UILabel *textLabel;
     UIView *textLabelBackgroundView;
     UIView *backgroundView;
+        
+    NSUInteger  labelHeight;
+    NSUInteger  labelInset;
 }
 
 @property (nonatomic, retain) UILabel *textLabel;
