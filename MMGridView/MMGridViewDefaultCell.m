@@ -19,8 +19,10 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "MMGridViewDefaultCell.h"
+#define K_DEFAULT_LABEL_HEIGHT  30
+#define K_DEFAULT_LABEL_INSET   5
 
+#import "MMGridViewDefaultCell.h"
 
 @implementation MMGridViewDefaultCell
 
@@ -67,8 +69,8 @@
 {
     [super layoutSubviews];
     
-    int labelHeight = 30;
-    int inset = 5;
+    labelHeight = K_DEFAULT_LABEL_HEIGHT;
+    labelInset = K_DEFAULT_LABEL_INSET;
     
     // Background view
     self.backgroundView.frame = self.bounds;
@@ -76,7 +78,7 @@
     
     // Layout label
     self.textLabelBackgroundView.frame = CGRectMake(0, 
-                                                    self.bounds.size.height - labelHeight - inset, 
+                                                    self.bounds.size.height - labelHeight - labelInset, 
                                                     self.bounds.size.width, 
                                                     labelHeight);
     self.textLabelBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -86,7 +88,7 @@
                           0, 
                           self.textLabel.superview.bounds.size.width,
                           self.textLabel.superview.bounds.size.height);
-    self.textLabel.frame = CGRectInset(f, inset, 0);
+    self.textLabel.frame = CGRectInset(f, labelInset, 0);
     self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 

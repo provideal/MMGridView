@@ -22,6 +22,10 @@
 #import <UIKit/UIKit.h>
 #import "MMGridViewCell.h"
 
+typedef enum {
+    VerticalLayout,
+    HorizontalLayout
+} GridLayoutStyle;
 
 @class MMGridView;
 
@@ -58,6 +62,7 @@
     NSUInteger numberOfRows;
     NSUInteger numberOfColumns;
     NSUInteger cellMargin;
+    GridLayoutStyle layoutStyle;
 }
 
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
@@ -68,6 +73,8 @@
 @property (nonatomic) NSUInteger cellMargin;
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
 @property (nonatomic, readonly) NSUInteger numberOfPages;
+@property (nonatomic, readonly) NSUInteger numberOfTatalRows;
+@property (nonatomic) GridLayoutStyle layoutStyle;
 
 - (void)reloadData;
 

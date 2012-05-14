@@ -19,6 +19,13 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+
+#define K_DEFAULT_NUMBEROFROWS      3
+#define K_DEFAULT_NUMBEROFCOLUMNS   2
+#define K_DEFAULT_CELLMARGIN        5
+#define K_DEFAULT_PAGEINDEX         0
+
+
 #import "MMGridView.h"
 
 
@@ -27,6 +34,7 @@
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic) NSUInteger currentPageIndex;
 @property (nonatomic) NSUInteger numberOfPages;
+@property (nonatomic) NSUInteger numberOfTatalRows;
 
 - (void)createSubviews;
 - (void)cellWasSelected:(MMGridViewCell *)cell;
@@ -45,6 +53,8 @@
 @synthesize cellMargin;
 @synthesize currentPageIndex;
 @synthesize numberOfPages;
+@synthesize numberOfTatalRows;
+@synthesize layoutStyle;
 
 
 - (void)dealloc
@@ -76,10 +86,11 @@
 
 - (void)createSubviews
 {
-    cellMargin = 3;
-    numberOfRows = 3;
-    numberOfColumns = 2;
-    currentPageIndex = 0;
+    cellMargin = K_DEFAULT_CELLMARGIN;
+    numberOfRows = K_DEFAULT_NUMBEROFROWS;
+    numberOfColumns = K_DEFAULT_NUMBEROFCOLUMNS;
+    currentPageIndex = K_DEFAULT_PAGEINDEX;
+    layoutStyle = VerticalLayout;
     
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
     self.contentMode = UIViewContentModeRedraw;
@@ -87,15 +98,23 @@
     
     self.scrollView = [[[UIScrollView alloc] initWithFrame:self.bounds] autorelease];
     self.scrollView.delegate = self;
-    self.scrollView.backgroundColor = [UIColor clearColor];
+    self.scrollView.backgroundColor = self.backgroundColor;
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.scrollView.alwaysBounceHorizontal = NO;
     self.scrollView.alwaysBounceVertical = NO;
-    self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.pagingEnabled = YES;
-    [self addSubview:self.scrollView];
     
+    if (layoutStyle == HorizontalLayout) {
+        self.scrollView.pagingEnabled = YES;
+        self.scrollView.showsVerticalScrollIndicator = NO;
+        self.scrollView.alwaysBounceVertical = NO;
+    } else {
+        self.scrollView.pagingEnabled = NO;
+        self.scrollView.showsVerticalScrollIndicator = YES;
+        self.scrollView.alwaysBounceVertical = YES;
+    }
+    
+    [self addSubview:self.scrollView];
     [self reloadData];
 }
 
@@ -118,7 +137,14 @@
         CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
                                        gridBounds.size.height / (float)noOfRows);
         
-        CGSize contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        CGSize contentSize;
+        
+        if (layoutStyle == HorizontalLayout) {
+            contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        } else {
+            contentSize = CGSizeMake(gridBounds.size.width, self.numberOfTatalRows * cellBounds.size.height);
+        }
+        
         [self.scrollView setContentSize:contentSize];
         
         for (UIView *v in self.scrollView.subviews) {
@@ -133,9 +159,15 @@
             NSInteger page = (int)floor((float)i / (float)cellsPerPage);
             NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
          
-            CGPoint origin = CGPointMake((page * gridBounds.size.width) + ((i % noOfCols) * cellBounds.size.width), 
-                                         (row * cellBounds.size.height));
-         
+            CGPoint origin;
+            if (layoutStyle == HorizontalLayout) {
+                origin = CGPointMake((page * gridBounds.size.width) + ((i % noOfCols) * cellBounds.size.width), 
+                                     (row * cellBounds.size.height));
+            } else {
+                origin = CGPointMake((i % noOfCols) * cellBounds.size.width, 
+                                     (ceil( i / noOfCols)) * cellBounds.size.height);
+            }
+
             CGRect f = CGRectMake(origin.x, origin.y, cellBounds.size.width, cellBounds.size.height);
             cell.frame = CGRectInset(f, self.cellMargin, self.cellMargin);
          
@@ -175,9 +207,28 @@
 
 - (NSUInteger)numberOfPages
 {
-    NSUInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
-    NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
-    return (uint)(ceil((float)numberOfCells / (float)cellsPerPage));
+    if (layoutStyle == HorizontalLayout) {
+        NSUInteger numberOfCells = [self.dataSource numberOfCellsInGridView:self];
+        NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
+        return (uint)(ceil((float)numberOfCells / (float)cellsPerPage));
+    } else {
+        return 1;
+    }
+}
+
+
+- (NSUInteger)numberOfTatalRows
+{
+    if (layoutStyle == VerticalLayout) {
+        NSUInteger numberofCells = [self.dataSource numberOfCellsInGridView:self];
+        if (numberofCells % numberOfColumns == 0) {
+            return numberofCells / numberOfColumns;
+        } else {
+            return numberofCells / numberOfColumns + 1;
+        }
+    } else {
+        return self.numberOfRows;
+    }
 }
 
 
