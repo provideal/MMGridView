@@ -20,6 +20,7 @@
 //
 
 #import "MMGridViewCell.h"
+#import "MMGridView.h"
 
 
 @interface MMGridViewCell()
@@ -32,10 +33,7 @@
 @synthesize gridView;
 @synthesize index;
 
-- (void)dealloc
-{
-    [super dealloc];
-}
+
 
 
 - (id)initWithFrame:(CGRect)frame 
