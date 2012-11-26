@@ -53,8 +53,6 @@
 {
     @private
     UIScrollView *scrollView;
-    id<MMGridViewDataSource> dataSource;
-    id<MMGridViewDelegate> delegate;
     NSUInteger numberOfRows;
     NSUInteger numberOfColumns;
     NSUInteger cellMargin;
