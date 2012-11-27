@@ -25,6 +25,11 @@
 
 @class MMGridView;
 
+typedef enum
+{
+    MMGridViewLayoutDirectionHorizontal,
+    MMGridViewLayoutDirectionVertical
+} MMGridViewLayoutDirection;
 // ----------------------------------------------------------------------------------
 
 #pragma - MMGridViewDataSource
@@ -67,6 +72,7 @@
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
 @property (nonatomic, readonly) NSUInteger numberOfPages;
 @property (nonatomic, assign, getter = isPagingEnabled) BOOL pagingEnabled;
+@property (nonatomic, assign) MMGridViewLayoutDirection layoutDirection;
 - (void)reloadData;
 
 @end
