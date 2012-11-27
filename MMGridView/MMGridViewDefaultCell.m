@@ -27,6 +27,7 @@
 @synthesize textLabel;
 @synthesize textLabelBackgroundView;
 @synthesize backgroundView;
+@synthesize imageView;
 
 
 
@@ -37,6 +38,10 @@
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectNull];
         self.backgroundView.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.backgroundView];
+        
+        // Image view
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectNull];
+        [self addSubview:self.imageView];
         
         // Label
         self.textLabelBackgroundView = [[UIView alloc] initWithFrame:CGRectNull];
@@ -66,6 +71,10 @@
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    // Image view
+    self.imageView.frame = self.bounds;
+    self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // Layout label
     self.textLabelBackgroundView.frame = CGRectMake(0, 

@@ -95,7 +95,8 @@
 {
     MMGridViewDefaultCell *cell = [[MMGridViewDefaultCell alloc] initWithFrame:CGRectNull];
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
-    cell.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell-image.png"]];
+    cell.imageView.image = [UIImage imageNamed:@"cell-image.png"];
+    
     return cell;
 }
 
