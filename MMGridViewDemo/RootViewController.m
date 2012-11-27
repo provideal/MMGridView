@@ -54,9 +54,12 @@
                                                                                   target:self 
                                                                                   action:@selector(reload)];
     self.navigationItem.rightBarButtonItem = reloadButton;
-    
+
     // setup the page control 
     [self setupPageControl];
+    
+    // Control grid view layout direction
+    gridView.layoutDirection = MMGridViewLayoutDirectionVertical;
 }
 
 
