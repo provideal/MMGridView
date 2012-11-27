@@ -206,6 +206,14 @@
     }
 }
 
+- (BOOL)isPagingEnabled
+{
+    return [scrollView isPagingEnabled];
+}
+- (void)setPagingEnabled:(BOOL)pagingEnabled
+{
+    [scrollView setPagingEnabled:pagingEnabled];
+}
 // ----------------------------------------------------------------------------------
 
 #pragma - UIScrollViewDelegate
