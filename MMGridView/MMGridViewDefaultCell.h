@@ -28,10 +28,12 @@
     UILabel *textLabel;
     UIView *textLabelBackgroundView;
     UIView *backgroundView;
+    UIImageView *imageView;
 }
 
-@property (nonatomic, retain) UILabel *textLabel;
-@property (nonatomic, retain) UIView *textLabelBackgroundView;
-@property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) UIView *textLabelBackgroundView;
+@property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end

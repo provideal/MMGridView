@@ -24,7 +24,7 @@
 
 
 @interface MMGridViewCell()
-@property (nonatomic, assign) MMGridView *gridView;
+@property (weak, nonatomic, assign) MMGridView *gridView;
 @end
 
 

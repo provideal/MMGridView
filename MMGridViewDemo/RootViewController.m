@@ -35,18 +35,10 @@
 
 #pragma - Object lifecycle
 
-- (void)dealloc
-{
-    [gridView release];
-    [pageControl release];
-    [super dealloc];
-}
 
 
 - (void)viewDidUnload {
-    [gridView release];
     gridView = nil;
-    [pageControl release];
     pageControl = nil;
     [super viewDidUnload];
 }
@@ -62,7 +54,6 @@
                                                                                   target:self 
                                                                                   action:@selector(reload)];
     self.navigationItem.rightBarButtonItem = reloadButton;
-    [reloadButton release];
     
     // setup the page control 
     [self setupPageControl];
@@ -102,7 +93,7 @@
 
 - (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSUInteger)index
 {
-    MMGridViewDefaultCell *cell = [[[MMGridViewDefaultCell alloc] initWithFrame:CGRectNull] autorelease];
+    MMGridViewDefaultCell *cell = [[MMGridViewDefaultCell alloc] initWithFrame:CGRectNull];
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
     cell.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell-image.png"]];
     return cell;
@@ -116,7 +107,6 @@
 {
     AnyViewController *c = [[AnyViewController alloc] initWithNibName:@"AnyViewController" bundle:nil];
     [self.navigationController pushViewController:c animated:YES];
-    [c release];
 }
 
 
@@ -128,7 +118,6 @@
                                           cancelButtonTitle:@"Cool!" 
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 

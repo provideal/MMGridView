@@ -24,7 +24,7 @@
 
 @interface MMGridView()
 
-@property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic) NSUInteger currentPageIndex;
 @property (nonatomic) NSUInteger numberOfPages;
 
