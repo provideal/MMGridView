@@ -66,7 +66,7 @@
 @property (nonatomic) NSUInteger cellMargin;
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
 @property (nonatomic, readonly) NSUInteger numberOfPages;
-
+@property (nonatomic, assign, getter = isPagingEnabled) BOOL pagingEnabled;
 - (void)reloadData;
 
 @end
