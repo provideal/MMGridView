@@ -46,14 +46,6 @@
 @synthesize currentPageIndex;
 @synthesize numberOfPages;
 
-
-- (void)dealloc
-{
-    [scrollView release];
-    [super dealloc];
-}
-
-
 - (id)initWithFrame:(CGRect)frame 
 {
     if ((self = [super initWithFrame:frame])) {
@@ -85,7 +77,7 @@
     self.contentMode = UIViewContentModeRedraw;
     self.backgroundColor = [UIColor clearColor];
     
-    self.scrollView = [[[UIScrollView alloc] initWithFrame:self.bounds] autorelease];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds] ;
     self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor clearColor];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
