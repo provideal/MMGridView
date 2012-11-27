@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7E05487E137A7412001A803F /* MMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6EF3A81340A53100DD91EC /* MMGridView.m */; };
+		7E2E57EA1665160B0002A496 /* cell-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E2E57E91665160B0002A496 /* cell-image@2x.png */; };
+		7E2E57EE1665172A0002A496 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E2E57EB1665172A0002A496 /* Default-568h@2x.png */; };
+		7E2E57EF1665172A0002A496 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E2E57EC1665172A0002A496 /* Default.png */; };
+		7E2E57F01665172A0002A496 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E2E57ED1665172A0002A496 /* Default@2x.png */; };
 		7E63973B1349CED300823606 /* AnyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6397381349CAEA00823606 /* AnyViewController.xib */; };
 		7E63973C1349CED900823606 /* AnyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6397371349CAEA00823606 /* AnyViewController.m */; };
 		7E6EF37C1340A48600DD91EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6EF37B1340A48600DD91EC /* Foundation.framework */; };
@@ -42,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E2E57E91665160B0002A496 /* cell-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-image@2x.png"; sourceTree = "<group>"; };
+		7E2E57EB1665172A0002A496 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7E2E57EC1665172A0002A496 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7E2E57ED1665172A0002A496 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7E6397361349CAEA00823606 /* AnyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnyViewController.h; sourceTree = "<group>"; };
 		7E6397371349CAEA00823606 /* AnyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnyViewController.m; sourceTree = "<group>"; };
 		7E6397381349CAEA00823606 /* AnyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnyViewController.xib; sourceTree = "<group>"; };
@@ -166,7 +174,11 @@
 		7E6EF3CE1340B52E00DD91EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E2E57EB1665172A0002A496 /* Default-568h@2x.png */,
+				7E2E57EC1665172A0002A496 /* Default.png */,
+				7E2E57ED1665172A0002A496 /* Default@2x.png */,
 				7E8B82D113B867BA00E5CA3F /* cell-image.png */,
+				7E2E57E91665160B0002A496 /* cell-image@2x.png */,
 				7E6EF3CF1340B52E00DD91EC /* MMGridViewDemo-Info.plist */,
 				7E6EF3D01340B52E00DD91EC /* InfoPlist.strings */,
 				7E6EF3D31340B52E00DD91EC /* MMGridViewDemo-Prefix.pch */,
@@ -240,6 +252,7 @@
 		7E6EF36F1340A48600DD91EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = metaminded;
 			};
 			buildConfigurationList = 7E6EF3721340A48600DD91EC /* Build configuration list for PBXProject "MMGridView" */;
@@ -271,6 +284,10 @@
 				7E63973B1349CED300823606 /* AnyViewController.xib in Resources */,
 				7E8B82D213B867BA00E5CA3F /* cell-image.png in Resources */,
 				7E9B3DEF13D6CB7B00D5E314 /* MainWindow-iPad.xib in Resources */,
+				7E2E57EA1665160B0002A496 /* cell-image@2x.png in Resources */,
+				7E2E57EE1665172A0002A496 /* Default-568h@2x.png in Resources */,
+				7E2E57EF1665172A0002A496 /* Default.png in Resources */,
+				7E2E57F01665172A0002A496 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +373,9 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
+				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 			};
 			name = Debug;
 		};
@@ -369,8 +387,9 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
+				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 			};
 			name = Release;
 		};
@@ -378,9 +397,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/MMGridView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MMGridView/MMGridView-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -390,9 +411,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/MMGridView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MMGridView/MMGridView-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -402,13 +425,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MMGridViewDemo/MMGridViewDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MMGridViewDemo/MMGridViewDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -420,12 +445,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MMGridViewDemo/MMGridViewDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MMGridViewDemo/MMGridViewDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
