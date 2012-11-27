@@ -72,6 +72,7 @@
     numberOfRows = 3;
     numberOfColumns = 2;
     currentPageIndex = 0;
+    self.layoutDirection = MMGridViewLayoutDirectionHorizontal;
     
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
     self.contentMode = UIViewContentModeRedraw;
@@ -110,27 +111,42 @@
         CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
                                        gridBounds.size.height / (float)noOfRows);
         
-        CGSize contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        CGSize contentSize = CGSizeZero;
+        if(self.layoutDirection == MMGridViewLayoutDirectionHorizontal)
+        {
+            contentSize = CGSizeMake(self.numberOfPages * gridBounds.size.width, gridBounds.size.height);
+        }else
+        {
+            contentSize = CGSizeMake(gridBounds.size.width, self.numberOfPages * gridBounds.size.height);
+        }
         [self.scrollView setContentSize:contentSize];
         
         for (UIView *v in self.scrollView.subviews) {
             [v removeFromSuperview];
         }
-
+        
         for (NSInteger i = 0; i < [self.dataSource numberOfCellsInGridView:self]; i++) {
             MMGridViewCell *cell = [self.dataSource gridView:self cellAtIndex:i];
             [cell performSelector:@selector(setGridView:) withObject:self];
             [cell performSelector:@selector(setIndex:) withObject:[NSNumber numberWithInt:i]];
-         
+            
             NSInteger page = (int)floor((float)i / (float)cellsPerPage);
-            NSInteger row  = (int)floor((float)i / (float)noOfCols) - (page * noOfRows);
-         
-            CGPoint origin = CGPointMake((page * gridBounds.size.width) + ((i % noOfCols) * cellBounds.size.width), 
-                                         (row * cellBounds.size.height));
-         
+            CGPoint origin = CGPointZero;
+            NSInteger indexInPage = i % cellsPerPage;
+            NSInteger col  = indexInPage % noOfRows;
+            NSInteger row = (NSInteger)floorf((float)indexInPage / (float)noOfRows);
+            if(self.layoutDirection == MMGridViewLayoutDirectionHorizontal)
+            {
+                origin = CGPointMake(page * gridBounds.size.width, 0.0);
+            }else
+            {
+                origin = CGPointMake(0.0, page * gridBounds.size.height);
+            }
+            origin.x += col * cellBounds.size.width;
+            origin.y += row * cellBounds.size.height;
+
             CGRect f = CGRectMake(origin.x, origin.y, cellBounds.size.width, cellBounds.size.height);
             cell.frame = CGRectInset(f, self.cellMargin, self.cellMargin);
-         
             [self.scrollView addSubview:cell];
         }
     }
@@ -197,10 +213,17 @@
 
 - (void)updateCurrentPageIndex
 {
+    if(self.layoutDirection == MMGridViewLayoutDirectionHorizontal)
+    {
     CGFloat pageWidth = scrollView.frame.size.width;
     NSUInteger cpi = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.currentPageIndex = cpi;
-    
+    }else
+    {
+        CGFloat pageHeight = scrollView.frame.size.height;
+        NSUInteger cpi = floor((scrollView.contentOffset.y - pageHeight /2) / pageHeight) + 1;
+        self.currentPageIndex = cpi;
+    }
     if (delegate && [delegate respondsToSelector:@selector(gridView:changedPageToIndex:)]) {
         [self.delegate gridView:self changedPageToIndex:self.currentPageIndex];
     }
