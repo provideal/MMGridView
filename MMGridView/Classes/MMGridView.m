@@ -133,6 +133,8 @@
          
             [self.scrollView addSubview:cell];
         }
+        
+        [self.scrollView setContentOffset: CGPointMake(self.scrollView.frame.size.width * self.currentPageIndex, 0)];
     }
 }
 
