@@ -36,6 +36,7 @@ typedef enum {
 @protocol MMGridViewDataSource<NSObject>
 - (NSInteger)numberOfCellsInGridView:(MMGridView *)gridView;
 - (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSUInteger)index;
+- (void)loadMoreForGrid;
 @end
 
 // ----------------------------------------------------------------------------------
@@ -43,6 +44,7 @@ typedef enum {
 #pragma - MMGridViewDelegate
 
 @protocol MMGridViewDelegate<NSObject>
+-(BOOL)canLoadMoreForGrid;
 @optional
 - (void)gridView:(MMGridView *)gridView didSelectCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
 - (void)gridView:(MMGridView *)gridView didDoubleTapCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index;
@@ -77,5 +79,5 @@ typedef enum {
 @property (nonatomic) GridLayoutStyle layoutStyle;
 
 - (void)reloadData;
-
+- (void)loadMoreFinished;
 @end

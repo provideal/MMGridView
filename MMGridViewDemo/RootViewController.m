@@ -25,6 +25,11 @@
 
 
 @interface RootViewController()
+{
+    
+}
+@property (retain,nonatomic) NSMutableArray *dataSource;
+
 - (void)reload;
 - (void)setupPageControl;
 @end
@@ -54,6 +59,11 @@
 
 - (void)viewDidLoad
 {
+    self.dataSource = [NSMutableArray arrayWithCapacity:20];
+    for (int i = 0; i<20; i++) {
+        [_dataSource addObject:@"Example"];
+    }
+    
     // Give us a nice title
     self.title = @"MMGridView Demo";
     
@@ -73,7 +83,7 @@
     gridView.layoutStyle = VerticalLayout;
     
     // setup the page control 
-    [self setupPageControl];
+    [self setupPageControl];    
 }
 
 
@@ -104,7 +114,7 @@
 
 - (NSInteger)numberOfCellsInGridView:(MMGridView *)gridView
 {
-    return 29;
+    return [_dataSource count];
 }
 
 
@@ -116,7 +126,23 @@
     return cell;
 }
 
-// ----------------------------------------------------------------------------------
+-(void)loadMoreForGrid
+{
+    //request more data here.
+    for (int i = 0; i<10; i++) {
+        [_dataSource addObject:@"Example"];
+    }
+    
+    [self performSelector:@selector(LoadDataFinished) withObject:nil afterDelay:1.0];
+}
+
+-(void)LoadDataFinished
+{
+     [gridView reloadData];
+    [gridView loadMoreFinished];   
+}
+
+  // ----------------------------------------------------------------------------------
 
 #pragma - MMGridViewDelegate
 
@@ -143,6 +169,13 @@
 - (void)gridView:(MMGridView *)theGridView changedPageToIndex:(NSUInteger)index
 {
     [self setupPageControl];
+}
+
+-(BOOL)canLoadMoreForGrid
+{
+    //return hasMore.
+    //here assume always YES.
+    return YES;
 }
 
 @end

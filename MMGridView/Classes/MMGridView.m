@@ -24,7 +24,7 @@
 #define K_DEFAULT_NUMBEROFCOLUMNS   2
 #define K_DEFAULT_CELLMARGIN        5
 #define K_DEFAULT_PAGEINDEX         0
-
+#define K_LOADMORE_HEIGHT           40
 
 #import "MMGridView.h"
 
@@ -35,6 +35,7 @@
 @property (nonatomic) NSUInteger currentPageIndex;
 @property (nonatomic) NSUInteger numberOfPages;
 @property (nonatomic) NSUInteger numberOfTatalRows;
+@property (nonatomic) BOOL isLoadingMore;
 
 - (void)createSubviews;
 - (void)cellWasSelected:(MMGridViewCell *)cell;
@@ -86,6 +87,7 @@
 
 - (void)createSubviews
 {
+
     cellMargin = K_DEFAULT_CELLMARGIN;
     numberOfRows = K_DEFAULT_NUMBEROFROWS;
     numberOfColumns = K_DEFAULT_NUMBEROFCOLUMNS;
@@ -116,6 +118,8 @@
     
     [self addSubview:self.scrollView];
     [self reloadData];
+    
+    _isLoadingMore = NO;
 }
 
 
@@ -279,5 +283,23 @@
 {
     [self updateCurrentPageIndex];
 }
+
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!_isLoadingMore && [delegate canLoadMoreForGrid]) {
+        CGFloat scrollPosition = self.scrollView.contentSize.height - self.scrollView.contentOffset.y- self.scrollView.frame.size.height;
+        if (scrollPosition < K_LOADMORE_HEIGHT) {
+            _isLoadingMore = YES;
+            [dataSource loadMoreForGrid];
+        }
+    }
+}
+
+-(void)loadMoreFinished
+{
+    _isLoadingMore = NO;
+}
+
 
 @end
