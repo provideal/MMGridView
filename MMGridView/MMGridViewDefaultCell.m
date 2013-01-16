@@ -71,7 +71,7 @@
     
     labelHeight = K_DEFAULT_LABEL_HEIGHT;
     labelInset = K_DEFAULT_LABEL_INSET;
-    
+  
     // Background view
     self.backgroundView.frame = self.bounds;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

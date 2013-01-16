@@ -129,7 +129,7 @@
 -(void)loadMoreForGrid
 {
     //request more data here.
-    for (int i = 0; i<10; i++) {
+    for (int i = 0; i<12; i++) {
         [_dataSource addObject:@"Example"];
     }
     

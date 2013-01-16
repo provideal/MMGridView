@@ -130,13 +130,6 @@
         NSInteger noOfRows = self.numberOfRows;
         NSUInteger cellsPerPage = self.numberOfColumns * self.numberOfRows;
         
-        BOOL isLandscape = UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]);
-        if (isLandscape) {
-            // In landscape mode switch rows and columns
-            noOfCols = self.numberOfRows;
-            noOfRows = self.numberOfColumns;
-        }
-        
         CGRect gridBounds = self.scrollView.bounds;
         CGRect cellBounds = CGRectMake(0, 0, gridBounds.size.width / (float)noOfCols, 
                                        gridBounds.size.height / (float)noOfRows);
@@ -201,6 +194,27 @@
     [self reloadData];
 }
 
+-(NSUInteger)numberOfRows
+{
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    BOOL isLandscape = UIInterfaceOrientationIsLandscape(currentOrientation);
+    if (isLandscape) {
+        return numberOfColumns;
+    }else{
+        return numberOfRows;
+    }
+}
+
+-(NSUInteger)numberOfColumns
+{
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    BOOL isLandscape = UIInterfaceOrientationIsLandscape(currentOrientation);
+    if (isLandscape) {
+        return numberOfRows;
+    }else{
+        return numberOfColumns;
+    }
+}
 
 - (void)setCellMargin:(NSUInteger)value
 {
@@ -225,15 +239,16 @@
 {
     if (layoutStyle == VerticalLayout) {
         NSUInteger numberofCells = [self.dataSource numberOfCellsInGridView:self];
-        if (numberofCells % numberOfColumns == 0) {
-            return numberofCells / numberOfColumns;
+        if (numberofCells % self.numberOfColumns == 0) {
+            return numberofCells / self.numberOfColumns;
         } else {
-            return numberofCells / numberOfColumns + 1;
+            return numberofCells / self.numberOfColumns + 1;
         }
     } else {
         return self.numberOfRows;
     }
 }
+
 
 
 - (void)reloadData
