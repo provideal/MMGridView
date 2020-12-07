@@ -94,7 +94,7 @@
 - (MMGridViewCell *)gridView:(MMGridView *)gridView cellAtIndex:(NSUInteger)index
 {
     MMGridViewDefaultCell *cell = [[MMGridViewDefaultCell alloc] initWithFrame:CGRectNull];
-    cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", index];
+    cell.textLabel.text = [NSString stringWithFormat:@"Cell%lud",(unsigned long) index];
     cell.imageView.image = [UIImage imageNamed:@"cell-image.png"];
     
     return cell;
@@ -113,12 +113,9 @@
 
 - (void)gridView:(MMGridView *)gridView didDoubleTapCell:(MMGridViewCell *)cell atIndex:(NSUInteger)index
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                    message:[NSString stringWithFormat:@"Cell at index %d was double tapped.", index]
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"Cool!" 
-                                          otherButtonTitles:nil];
-    [alert show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"Cell at index %lu was double tapped.", (unsigned long)index] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction: [UIAlertAction actionWithTitle:@"Cool!" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

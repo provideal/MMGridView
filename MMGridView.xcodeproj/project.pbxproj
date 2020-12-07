@@ -46,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4EB9B444257E5EB700444FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "iPad/Base.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		4EB9B445257E5EB700444FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		4EB9B446257E5EB700444FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		7E2E57E91665160B0002A496 /* cell-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-image@2x.png"; sourceTree = "<group>"; };
 		7E2E57EB1665172A0002A496 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7E2E57EC1665172A0002A496 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -67,14 +70,11 @@
 		7E6EF3D41340B52E00DD91EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7E6EF3D61340B52E00DD91EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7E6EF3D71340B52E00DD91EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7E6EF3DA1340B52E00DD91EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		7E6EF3DC1340B52E00DD91EC /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		7E6EF3DD1340B52E00DD91EC /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		7E6EF3E01340B52E00DD91EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		7E79DC20135240430085C23D /* MMGridViewDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGridViewDefaultCell.h; sourceTree = "<group>"; };
 		7E79DC21135240430085C23D /* MMGridViewDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGridViewDefaultCell.m; sourceTree = "<group>"; };
 		7E8B82D113B867BA00E5CA3F /* cell-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-image.png"; sourceTree = "<group>"; };
-		7E9B3DEE13D6CB7B00D5E314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		7EBF307C1349F161007AE714 /* MMGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMGridViewCell.h; path = Classes/MMGridViewCell.h; sourceTree = "<group>"; };
 		7EBF307D1349F161007AE714 /* MMGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMGridViewCell.m; path = Classes/MMGridViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,15 +252,16 @@
 		7E6EF36F1340A48600DD91EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = metaminded;
 			};
 			buildConfigurationList = 7E6EF3721340A48600DD91EC /* Build configuration list for PBXProject "MMGridView" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7E6EF36D1340A48600DD91EC;
 			productRefGroup = 7E6EF3791340A48600DD91EC /* Products */;
@@ -338,7 +339,7 @@
 		7E6EF3D91340B52E00DD91EC /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7E6EF3DA1340B52E00DD91EC /* en */,
+				4EB9B445257E5EB700444FA8 /* Base */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -346,7 +347,7 @@
 		7E6EF3DF1340B52E00DD91EC /* RootViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7E6EF3E01340B52E00DD91EC /* en */,
+				4EB9B446257E5EB700444FA8 /* Base */,
 			);
 			name = RootViewController.xib;
 			sourceTree = "<group>";
@@ -354,7 +355,7 @@
 		7E9B3DED13D6CB7B00D5E314 /* MainWindow-iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7E9B3DEE13D6CB7B00D5E314 /* en */,
+				4EB9B444257E5EB700444FA8 /* Base */,
 			);
 			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
@@ -365,7 +366,8 @@
 		7E6EF3991340A48600DD91EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -373,7 +375,8 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 			};
@@ -382,12 +385,12 @@
 		7E6EF39A1340A48600DD91EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = iphoneos;
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 			};
@@ -433,8 +436,9 @@
 				GCC_PREFIX_HEADER = "MMGridViewDemo/MMGridViewDemo-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MMGridViewDemo/MMGridViewDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.metaminded.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -452,9 +456,10 @@
 				GCC_PREFIX_HEADER = "MMGridViewDemo/MMGridViewDemo-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MMGridViewDemo/MMGridViewDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.metaminded.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
